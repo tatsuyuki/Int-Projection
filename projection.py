@@ -47,7 +47,14 @@ def write_func():            ###Get input from user and append to table file
 
     dealer = raw_input("Dealer:  ")
     hirer = raw_input("Hirer's Name:  ")
+    ###     acNum to test for duplicate number
     acNum = raw_input("Loan Number:   ")
+    with open('/Users/Michael/Documents/GitHub/Int-Projection/projection.csv', 'r') as compare:
+        reader = csv.reader(compare)
+        for row in reader:
+            if str(row) == str(acNum):
+                acNum = raw_input("Duplicate Loan No! Recheck and try again!")
+                    
     details = raw_input("Loan Details:  ")
     agg_date = str(raw_input("Agreement Date (yyyymmdd):"))
     ###     While loop to ensure correct date format for ease of processing
@@ -77,7 +84,11 @@ def dict_read():
 
     for r in data_in:
         print r
-
+        
+""" hp_interest to be modified to take 1 param, loan-number and match it against table in projection.csv for the
+    respective loan.
+    and subsequently the required details to calculate the interest
+"""
 def hp_interest(tenure, interest, amount, l_no):                                  ### Calculate HP interest given the param
     term_charge = float(amount * float(tenure/12)) * float(interest)/100 #Getting term charge
     ###print term_charge
@@ -118,11 +129,17 @@ def agreement_date(string):                 ###convert a set of string into date
    
     return ag_date
 
+##generate list of 12 months and populate relavant interest
+
+def calendar(string):
+
+    c.header = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+    return
 
 
 
 
-hp_interest(36, 4, 50000, str(3013/020))
+
 
 begin = raw_input("Write or Read?")
 if (begin == "Write") or (begin == "write"):

@@ -27,6 +27,20 @@ else:
     print ("File exist, entering appending mode")   #Message if file exist
 
 
+
+##### Class for Code Reusability
+
+"""class inc_project:
+
+    def __init__(self): """
+        
+
+
+
+
+
+
+
 def write_func():            ###Get input from user and append to table file
     
     dbase = []
@@ -64,22 +78,33 @@ def dict_read():
     for r in data_in:
         print r
 
-def hp_interest(tenure, interest, amount):                                  ### Calculate HP interest given the param
+def hp_interest(tenure, interest, amount, l_no):                                  ### Calculate HP interest given the param
     term_charge = float(amount * float(tenure/12)) * float(interest)/100 #Getting term charge
     ###print term_charge
     int_constant = float(((tenure)*(tenure+1))/2) #Calculating interest constant for use in formula 
     ###print int_constant                           *skipping full formula for simplicity
     instalment = tenure
     ###print instalment
-    interest_tab = []
+    interest_tab = [str(l_no)]
     count = 0
-    count_tab = []
+    count_tab = ['Loan Number']
     while instalment > 0:
         interest = float(((instalment) / (int_constant)) * (term_charge))
         interest_tab.append(interest)
         count += 1
         instalment -= 1
         count_tab.append(count)
+
+    hp_header = count_tab
+    with open('/Users/Michael/Documents/GitHub/Int-Projection/HP_Int.csv', 'w') as h:
+        writer = csv.writer(h)
+        writer.writerow(hp_header)
+
+    with open('/Users/Michael/Documents/GitHub/Int-Projection/HP_Int.csv', 'a') as ins:
+        writer = csv.writer(ins)
+        writer.writerow(interest_tab)
+    
+    
 
     ###for i in interest_tab:
     ###    print i
@@ -97,7 +122,7 @@ def agreement_date(string):                 ###convert a set of string into date
 
 
 
-agreement_date(20120310)
+hp_interest(36, 4, 50000, str(3013/020))
 
 begin = raw_input("Write or Read?")
 if (begin == "Write") or (begin == "write"):

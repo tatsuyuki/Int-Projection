@@ -30,9 +30,10 @@ else:
 
 ##### Class for Code Reusability
 
-"""class inc_project:
+class inc_project(object):
 
-    def __init__(self): """
+    def __init__(self):
+        pass
         
 
 

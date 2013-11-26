@@ -139,7 +139,8 @@ def calendar(string):
 
 
 
-
+hp_interest(60, 3, 60000, 3013/013)
+hp_interest(108, 5, 1500000, 3012/022)
 
 
 begin = raw_input("Write or Read?")
